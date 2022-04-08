@@ -1,0 +1,18 @@
+[package]
+name = "Multicall"
+version = "0.1.0"
+authors = ["Milen Radkov <milen@hack.bg>"]
+edition = "2018"
+repository = "https://github.com/hackbg/secret-multicall"
+description = "Multicall: on-chain query batcher contract for Secret Network"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/contract.rs"
+
+[dependencies]
+fadroma = { path = "../fadroma/crates/fadroma", features = ["derive"] }
+serde = { version = "1.0.103", default-features = false, features = ["derive"] }
+
+[dev-dependencies]
+cosmwasm-schema = "0.10.1"

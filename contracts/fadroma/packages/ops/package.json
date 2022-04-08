@@ -1,0 +1,30 @@
+{
+  "name": "@fadroma/ops",
+  "version": "1.0.0-beta",
+  "type": "module",
+  "main": "./index.ts",
+  "dependencies": {
+    "@hackbg/tools":             "^1",
+    "@iov/crypto":               "^2.1.0",
+    "@iov/encoding":             "^2.1.0",
+    "ajv":                       "^8.6",
+    "align-yaml":                "^0.1.8",
+    "dockerode":                 "^3.3.1",
+    "dotenv":                    "^15",
+    "exponential-backoff":       "^3.1",
+    "freeport-async":            "^2.0.0",
+    "js-yaml":                   "^4.1.0",
+    "json-schema-to-typescript": "^10.1.4",
+    "limiter":                   "^2.1.0",
+    "line-transform-stream":     "^0.1.0",
+    "toml":                      "^3",
+    "wasm-ffi":                  "^0.3.0"
+  },
+  "devDependencies": {
+    "tap": "^15.0.9",
+    "@hackbg/ganesha": "workspace:*"
+  },
+  "scripts": {
+    "test": "ganesha-node index.spec.js.md"
+  }
+}

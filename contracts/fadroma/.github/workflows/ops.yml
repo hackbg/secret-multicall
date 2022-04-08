@@ -1,0 +1,17 @@
+name: Run JS tests
+on: [push, pull_request]
+jobs:
+  js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+        with: { submodules: true }
+      - name: Install PNPM and deps
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14.3
+          run_install: |
+            - recursive: true
+      - name: Run tests
+        run: ls -al && pnpm test
