@@ -1,5 +1,3 @@
-use std::collections::BTreeMap;
-
 use crate::tests::setup::QueryMock;
 
 use super::setup::MulticallTestbed;
@@ -9,7 +7,7 @@ fn init() {
     MulticallTestbed::new();
 }
 #[test]
-fn chain_batch() {
+fn chain_batch_regular() {
     let testbed = MulticallTestbed::new();
 
     let msg = QueryMock::Regular {
@@ -22,19 +20,18 @@ fn chain_batch() {
     assert!(responses.len() == 2);
 }
 #[test]
-fn map_batch() {
+fn has_exception() {
     let testbed = MulticallTestbed::new();
 
     let msg = QueryMock::Regular {
         prop: "works".to_string(),
     };
+    let err = QueryMock::Exception {};
 
-    let mut map = BTreeMap::new();
+    let queries = vec![msg.clone(), err.clone()];
 
-    map.insert("key1".to_string(), msg.clone());
-    map.insert("key2".to_string(), msg.clone());
-
-    let responses = testbed.batch_map(map);
+    let responses = testbed.batch_chain(queries);
 
     assert!(responses.len() == 2);
+    assert!(responses[1].error.is_some());
 }

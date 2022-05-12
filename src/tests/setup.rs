@@ -5,10 +5,9 @@ use fadroma::{
     from_binary, to_binary, Binary, ContractLink, Env, HandleResponse, HumanAddr, InitResponse,
     StdError, StdResult,
 };
-use schemars::Map;
 use serde::{Deserialize, Serialize};
 
-use crate::interfaces::multicall::{ChainResponse, InitMsg, MapResponse, MultiQuery, QueryMsg};
+use crate::interfaces::multicall::{ChainResponse, InitMsg, MultiQuery, QueryMsg};
 pub struct MulticallTestbed {
     pub ensemble: ContractEnsemble,
     pub mock_contract: ContractLink<HumanAddr>,
@@ -69,31 +68,6 @@ impl MulticallTestbed {
             .query(
                 self.multicall.address.clone(),
                 QueryMsg::MultiChain { queries },
-            )
-            .unwrap();
-
-        result
-    }
-
-    pub fn batch_map(&self, queries: Map<String, QueryMock>) -> MapResponse {
-        let queries = queries
-            .into_iter()
-            .map(|(key, query)| {
-                (
-                    key,
-                    MultiQuery {
-                        contract_address: self.mock_contract.address.clone(),
-                        query: to_binary(&query).unwrap(),
-                    },
-                )
-            })
-            .collect::<Map<_, _>>();
-
-        let result: MapResponse = self
-            .ensemble
-            .query(
-                self.multicall.address.clone(),
-                QueryMsg::MultiMap { queries },
             )
             .unwrap();
 

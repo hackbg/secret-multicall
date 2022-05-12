@@ -6,8 +6,7 @@ use fadroma::{
     cosmwasm_std, to_vec, Api, ContractLink, Empty, Extern, HumanAddr, InitResponse, Querier,
     QuerierResult, QueryRequest, StdResult, Storage, WasmQuery,
 };
-use interfaces::multicall::{ChainResponse, MapResponse, MultiQuery, MultiQueryResult};
-use schemars::Map;
+use interfaces::multicall::{ChainResponse, MultiQuery, MultiQueryResult};
 use state::{load_self_ref, save_self_ref};
 
 // MAKE SURE TO CHANGE ON ANY NEW DEPLOY
@@ -39,21 +38,6 @@ pub trait Multicall {
             .into_iter()
             .map(|query| process_wasm_query(deps, query, &self_ref))
             .collect::<Vec<_>>();
-
-        Ok(results)
-    }
-
-    #[query]
-    fn multi_map(queries: Map<String, MultiQuery>) -> StdResult<MapResponse> {
-        let self_ref = load_self_ref(deps)?;
-
-        let results = queries
-            .into_iter()
-            .map(|(key, query)| {
-                let result = process_wasm_query(deps, query, &self_ref);
-                (key, result)
-            })
-            .collect::<Map<_, _>>();
 
         Ok(results)
     }
