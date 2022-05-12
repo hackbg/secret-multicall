@@ -11,7 +11,7 @@ where
     A: Api,
     Q: Querier,
 {
-    let self_ref: ContractLink<CanonicalAddr> = load(&mut deps.storage, KEY)?.unwrap();
+    let self_ref: ContractLink<CanonicalAddr> = load(&deps.storage, KEY)?.unwrap();
 
     Ok(self_ref.humanize(&deps.api)?)
 }
