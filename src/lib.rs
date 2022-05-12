@@ -36,7 +36,7 @@ pub trait Multicall {
         let self_ref = load_self_ref(deps)?;
         let results = queries
             .into_iter()
-            .map(|query| process_wasm_query(deps, query, &self_ref).unwrap())
+            .map(|query| process_wasm_query(deps, query, &self_ref))
             .collect::<Vec<_>>();
 
         Ok(results)
@@ -44,7 +44,17 @@ pub trait Multicall {
 
     #[query]
     fn multi_map(queries: Map<String, MultiQuery>) -> StdResult<MapResponse> {
-        Ok(MapResponse::default())
+        let self_ref = load_self_ref(deps)?;
+
+        let results = queries
+            .into_iter()
+            .map(|(key, query)| {
+                let result = process_wasm_query(deps, query, &self_ref);
+                (key, result)
+            })
+            .collect::<Map<_, _>>();
+
+        Ok(results)
     }
 }
 
@@ -52,7 +62,7 @@ fn process_wasm_query<S, A, Q>(
     deps: &Extern<S, A, Q>,
     request: MultiQuery,
     self_ref: &ContractLink<HumanAddr>,
-) -> StdResult<MultiQueryResult>
+) -> MultiQueryResult
 where
     S: Storage,
     A: Api,
@@ -65,9 +75,9 @@ where
     }
     .into();
 
-    let query_response: QuerierResult = deps.querier.raw_query(&to_vec(&msg)?);
+    let query_response: QuerierResult = deps.querier.raw_query(&to_vec(&msg).unwrap());
 
-    let result = match query_response {
+    match query_response {
         Ok(Ok(data)) => MultiQueryResult {
             error: None,
             data: Some(data),
@@ -80,7 +90,5 @@ where
             error: Some(err.to_string()),
             data: None,
         },
-    };
-
-    Ok(result)
+    }
 }
