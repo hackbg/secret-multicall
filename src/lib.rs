@@ -1,9 +1,10 @@
 mod interfaces;
 mod state;
+mod tests;
 use fadroma::derive_contract::{contract_impl, init, query};
 use fadroma::{
     cosmwasm_std, to_vec, Api, ContractLink, Empty, Extern, HumanAddr, InitResponse, Querier,
-    QuerierResult, QueryRequest, QueryResult, StdResult, Storage, SystemResult, WasmQuery,
+    QuerierResult, QueryRequest, StdResult, Storage, WasmQuery,
 };
 use interfaces::multicall::{ChainResponse, MapResponse, MultiQuery, MultiQueryResult};
 use schemars::Map;
