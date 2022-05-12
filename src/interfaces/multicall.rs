@@ -24,7 +24,7 @@ pub struct MultiQuery {
     pub query: Binary,
 }
 #[derive(Serialize, Deserialize, JsonSchema, Debug)]
-pub struct QueryResult {
+pub struct MultiQueryResult {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
     pub error: Option<String>,
@@ -34,5 +34,5 @@ pub struct QueryResult {
     pub data: Option<Binary>,
 }
 
-pub type MapResponse = Map<String, QueryResult>;
-pub type ChainResponse = Vec<QueryResult>;
+pub type MapResponse = Map<String, MultiQueryResult>;
+pub type ChainResponse = Vec<MultiQueryResult>;
