@@ -1,5 +1,8 @@
+mod interfaces;
+
 use fadroma::derive_contract::{contract, init, query};
 use fadroma::{cosmwasm_std, InitResponse, StdResult};
+
 
 // MAKE SURE TO CHANGE ON ANY NEW DEPLOY
 const VERSION: &str = "0.0.1";
