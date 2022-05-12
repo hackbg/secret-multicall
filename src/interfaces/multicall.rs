@@ -1,23 +1,29 @@
 use fadroma::{
-    derive_contract::interface, Binary, HandleResponse, HumanAddr, InitResponse, StdResult,
+    cosmwasm_std,
+    derive_contract::{init, interface, query},
+    Binary, HumanAddr, InitResponse, StdResult,
 };
 use schemars::{JsonSchema, Map};
 use serde::{Deserialize, Serialize};
 
 #[interface]
 pub trait Multicall {
-    fn version() -> String;
+    #[query]
+    fn version() -> StdResult<String>;
+    #[init]
     fn new() -> StdResult<InitResponse>;
-    fn multi_chain(queries: Vec<MultiQuery>) -> StdResult<HandleResponse>;
-    fn multi_map() -> StdResult<HandleResponse>;
+    #[query]
+    fn multi_chain(queries: Vec<MultiQuery>) -> StdResult<ChainResponse>;
+    #[query]
+    fn multi_map(queries: Map<String, MultiQuery>) -> StdResult<MapResponse>;
 }
 
-#[derive(Serialize, Deserialize, JsonSchema)]
+#[derive(Serialize, Deserialize, JsonSchema, Debug)]
 pub struct MultiQuery {
     pub contract_address: HumanAddr,
     pub query: Binary,
 }
-#[derive(Serialize, Deserialize, JsonSchema)]
+#[derive(Serialize, Deserialize, JsonSchema, Debug)]
 pub struct QueryResult {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
