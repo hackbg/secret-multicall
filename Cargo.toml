@@ -1,0 +1,20 @@
+[package]
+name    = "multicall"
+version = "0.1.0"
+edition = "2021"
+authors = ["Wiz1991 <elvis.private20@gmail.com>"]
+
+exclude = [
+    "contract.wasm.gz",
+    "contract.wasm",
+    "hash.txt",
+] # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+doctest    = false
+
+[dependencies]
+fadroma = { path = "./fadroma/crates/fadroma", features = ["derive"] }
+serde = { version = "1.0.103", default-features = false, features = ["derive"] }
+schemars = "0.7"
