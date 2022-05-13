@@ -9,6 +9,9 @@
         "deploy": "fadroma scripts/deploy.ts"
     },
     "keywords": [],
+    "packages": [
+      "./fadroma"
+    ],
     "author": "",
     "license": "ISC",
     "dependencies": {
