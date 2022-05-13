@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "es2020",
+        "moduleResolution": "node",
+        "module": "NodeNext",
+        "inlineSourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "lib": ["es2020"]
+    }
+}

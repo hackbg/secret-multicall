@@ -1,0 +1,22 @@
+{
+    "name": "@sienna/multicall",
+    "version": "0.0.1",
+    "type": "module",
+    "workspace": true,
+    "private": true,
+    "scripts": {
+        "build": "fadroma build scripts/build.ts",
+        "deploy": "fadroma scripts/deploy.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packages": [
+        "./fadroma/deps/*"
+    ],
+    "dependencies": {
+        "@hackbg/fadroma": "./fadroma",
+        "typescript": "^4.4.4",
+        "open": "^8.4.0"
+    }
+}
