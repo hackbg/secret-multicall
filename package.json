@@ -11,11 +11,8 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "packages": [
-        "./fadroma/deps/*"
-    ],
     "dependencies": {
-        "@hackbg/fadroma": "./fadroma",
+        "@hackbg/fadroma": "workspace:*",
         "typescript": "^4.4.4",
         "open": "^8.4.0"
     }
