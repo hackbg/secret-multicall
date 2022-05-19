@@ -1,4 +1,4 @@
 [submodule "fadroma"]
 	path = fadroma
 	url = https://github.com/hackbg/fadroma
-	commit = d5a295cc7f280668f1fffd92457244f363e7700f
+	branch = v100
