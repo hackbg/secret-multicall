@@ -10,13 +10,14 @@
     },
     "keywords": [],
     "packages": [
-      "./fadroma"
+        "./scripts",
+        "./fadroma/deps/*"
     ],
     "author": "",
     "license": "ISC",
     "dependencies": {
         "@hackbg/fadroma": "workspace:*",
-        "typescript": "^4.4.4",
-        "open": "^8.4.0"
+        "open": "^8.4.0",
+        "typescript": "^4.6.4"
     }
 }

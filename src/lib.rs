@@ -1,6 +1,8 @@
 mod interfaces;
 mod state;
+#[cfg(test)]
 mod tests;
+
 use fadroma::derive_contract::{contract_impl, init, query};
 use fadroma::{
     cosmwasm_std, to_vec, Api, ContractLink, Empty, Extern, HumanAddr, InitResponse, Querier,
@@ -12,7 +14,7 @@ use state::{load_self_ref, save_self_ref};
 // MAKE SURE TO CHANGE ON ANY NEW DEPLOY
 const VERSION: &str = "0.0.1";
 
-#[contract_impl(entry, path = "interfaces::multicall")]
+#[contract_impl(entry, path = "crate::interfaces::multicall")]
 pub trait Multicall {
     #[init]
     fn new() -> StdResult<InitResponse> {
