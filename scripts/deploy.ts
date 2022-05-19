@@ -19,8 +19,9 @@ async function deployMulticall(context: OperationContext) {
             [source('multicall')]
         ),
     } = context;
-
+    
     await deployment.init(agent, multicallTemplate, 'Multicall[v0.1.0]', {});
+    
 }
 
 /** Command fragment: add `...canBuildAndUpload` to the start of
@@ -39,3 +40,6 @@ export const canBuildAndUpload: Operation<any>[] = [
 export const inNewDeployment = [...canBuildAndUpload, Fadroma.Deploy.New];
 
 Fadroma.command('multicall', ...inNewDeployment, deployMulticall);
+
+
+export default Fadroma.module(import.meta.url);
