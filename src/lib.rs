@@ -1,15 +1,10 @@
 mod interfaces;
-mod state;
 #[cfg(test)]
 mod tests;
 
 use fadroma::derive_contract::{contract_impl, init, query};
-use fadroma::{
-    cosmwasm_std, to_vec, Api, ContractLink, Empty, Extern, HumanAddr, InitResponse, Querier,
-    QuerierResult, QueryRequest, StdResult, Storage, WasmQuery,
-};
+use fadroma::{cosmwasm_std, prelude::*};
 use interfaces::multicall::{ChainResponse, MultiQuery, MultiQueryResult};
-use state::{load_self_ref, save_self_ref};
 
 // MAKE SURE TO CHANGE ON ANY NEW DEPLOY
 const VERSION: &str = "0.0.1";
@@ -18,13 +13,6 @@ const VERSION: &str = "0.0.1";
 pub trait Multicall {
     #[init]
     fn new() -> StdResult<InitResponse> {
-        save_self_ref(
-            deps,
-            ContractLink {
-                address: env.contract.address,
-                code_hash: env.contract_code_hash,
-            },
-        )?;
         Ok(InitResponse::default())
     }
 
@@ -35,21 +23,16 @@ pub trait Multicall {
 
     #[query]
     fn multi_chain(queries: Vec<MultiQuery>) -> StdResult<ChainResponse> {
-        let self_ref = load_self_ref(deps)?;
         let results = queries
             .into_iter()
-            .map(|query| process_wasm_query(deps, query, &self_ref))
+            .map(|query| process_wasm_query(deps, query))
             .collect::<Vec<_>>();
 
         Ok(results)
     }
 }
 
-fn process_wasm_query<S, A, Q>(
-    deps: &Extern<S, A, Q>,
-    request: MultiQuery,
-    self_ref: &ContractLink<HumanAddr>,
-) -> MultiQueryResult
+fn process_wasm_query<S, A, Q>(deps: &Extern<S, A, Q>, request: MultiQuery) -> MultiQueryResult
 where
     S: Storage,
     A: Api,
@@ -57,7 +40,7 @@ where
 {
     let msg: QueryRequest<Empty> = WasmQuery::Smart {
         contract_addr: request.contract_address,
-        callback_code_hash: self_ref.code_hash.clone(),
+        callback_code_hash: request.code_hash.clone(),
         msg: request.query,
     }
     .into();

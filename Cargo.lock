@@ -9,43 +9,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b41b7ea54a0c9d92199de89e20e58d49f02f8e699814ef3fdf266f6f748d15c7"
 
 [[package]]
-name = "bincode2"
-version = "2.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f49f6183038e081170ebbbadee6678966c7d54728938a3e7de7f4e780770318f"
-dependencies = [
- "byteorder",
- "serde",
-]
-
-[[package]]
-name = "block-buffer"
-version = "0.9.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4152116fd6e9dadb291ae18fc1ec3575ed6d84c29642d97890f4b4a3417297e4"
-dependencies = [
- "generic-array",
-]
-
-[[package]]
-name = "byteorder"
-version = "1.4.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
-
-[[package]]
-name = "cc"
-version = "1.0.73"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2fff2a6927b3bb87f9595d67196a70493f627687a71d87a0d692242c33f58c11"
-
-[[package]]
-name = "cfg-if"
-version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
-
-[[package]]
 name = "cosmwasm-schema"
 version = "0.10.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -56,30 +19,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cpufeatures"
-version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "59a6001667ab124aebae2a495118e11d30984c3a653e99d86d58971708cf5e4b"
-dependencies = [
- "libc",
-]
-
-[[package]]
-name = "crunchy"
-version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a81dae078cea95a014a339291cec439d2f232ebe854a9d672b796c6afafa9b7"
-
-[[package]]
-name = "digest"
-version = "0.9.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d3dd60d1080a57a05ab032377049e0591415d2b31afd7028356dbf3cc6dcb066"
-dependencies = [
- "generic-array",
-]
-
-[[package]]
 name = "doc-comment"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -87,101 +26,23 @@ checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
 
 [[package]]
 name = "fadroma"
-version = "22.1.0"
+version = "1.0.0"
 dependencies = [
- "fadroma-auth",
- "fadroma-auth-proc",
- "fadroma-bind-js",
- "fadroma-composability",
- "fadroma-derive-contract",
- "fadroma-ensemble",
- "fadroma-killswitch",
- "fadroma-math",
+ "fadroma-derive-canonize",
  "fadroma-platform-scrt",
+ "fadroma-proc-derive",
  "fadroma-proc-message",
- "fadroma-snip20-api",
- "fadroma-snip20-impl",
- "fadroma-storage",
-]
-
-[[package]]
-name = "fadroma-auth"
-version = "0.1.0"
-dependencies = [
- "fadroma-derive-contract",
- "fadroma-math",
- "fadroma-platform-scrt",
- "fadroma-storage",
- "remain",
- "ripemd160",
- "secp256k1",
- "serde",
- "sha2",
-]
-
-[[package]]
-name = "fadroma-auth-proc"
-version = "0.1.0"
-dependencies = [
- "quote",
- "syn",
-]
-
-[[package]]
-name = "fadroma-bind-js"
-version = "0.1.0"
-
-[[package]]
-name = "fadroma-composability"
-version = "0.1.0"
-dependencies = [
- "fadroma-platform-scrt",
- "fadroma-storage",
- "serde",
-]
-
-[[package]]
-name = "fadroma-derive-contract"
-version = "0.1.0"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "fadroma-ensemble"
-version = "0.1.0"
-dependencies = [
- "fadroma-platform-scrt",
- "fadroma-storage",
  "oorandom",
  "serde",
 ]
 
 [[package]]
-name = "fadroma-killswitch"
+name = "fadroma-derive-canonize"
 version = "0.1.0"
 dependencies = [
- "fadroma-auth",
- "fadroma-auth-proc",
- "fadroma-derive-contract",
- "fadroma-platform-scrt",
- "fadroma-storage",
- "serde",
-]
-
-[[package]]
-name = "fadroma-math"
-version = "0.1.0"
-dependencies = [
- "fadroma-platform-scrt",
- "primitive-types",
- "rand_chacha",
- "rand_core",
- "serde",
- "sha2",
- "subtle",
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -192,8 +53,16 @@ dependencies = [
  "schemars",
  "secret-cosmwasm-std",
  "secret-cosmwasm-storage",
- "secret-toolkit",
  "serde",
+]
+
+[[package]]
+name = "fadroma-proc-derive"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -205,69 +74,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "fadroma-snip20-api"
-version = "0.1.0"
-dependencies = [
- "fadroma-platform-scrt",
-]
-
-[[package]]
-name = "fadroma-snip20-impl"
-version = "0.1.0"
-dependencies = [
- "bincode2",
- "fadroma-auth",
- "fadroma-math",
- "fadroma-platform-scrt",
- "fadroma-storage",
- "schemars",
- "serde",
-]
-
-[[package]]
-name = "fadroma-storage"
-version = "0.1.0"
-dependencies = [
- "fadroma-platform-scrt",
- "serde",
-]
-
-[[package]]
-name = "fixed-hash"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cfcf0ed7fe52a17a03854ec54a9f76d6d84508d1c0e66bc1793301c73fc8493c"
-dependencies = [
- "static_assertions",
-]
-
-[[package]]
-name = "generic-array"
-version = "0.14.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd48d33ec7f05fbfa152300fdad764757cbded343c1aa1cff2fbaf4134851803"
-dependencies = [
- "typenum",
- "version_check",
-]
-
-[[package]]
-name = "hex"
-version = "0.4.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
-
-[[package]]
 name = "itoa"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1aab8fc367588b89dcee83ab0fd66b72b50b72fa1904d7095045ace2b0c81c35"
-
-[[package]]
-name = "libc"
-version = "0.2.125"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5916d2ae698f6de9bfb891ad7a8d65c09d232dc58cc4ac433c7da3b2fd84bc2b"
 
 [[package]]
 name = "multicall"
@@ -285,28 +95,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ab1bc2a289d34bd04a330323ac98a1b4bc82c9d9fcb1e66b63caa84da26b575"
 
 [[package]]
-name = "opaque-debug"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "624a8340c38c1b80fd549087862da4ba43e08858af025b236e509b6649fc13d5"
-
-[[package]]
-name = "ppv-lite86"
-version = "0.2.16"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eb9f9e6e233e5c4a35559a617bf40a4ec447db2e84c20b55a6f83167b7e57872"
-
-[[package]]
-name = "primitive-types"
-version = "0.9.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "06345ee39fbccfb06ab45f3a1a5798d9dafa04cb8921a76d227040003a234b0e"
-dependencies = [
- "fixed-hash",
- "uint",
-]
-
-[[package]]
 name = "proc-macro2"
 version = "1.0.38"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -322,44 +110,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a1feb54ed693b93a84e14094943b84b7c4eae204c512b7ccb95ab0c66d278ad1"
 dependencies = [
  "proc-macro2",
-]
-
-[[package]]
-name = "rand_chacha"
-version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f4c8ed856279c9737206bf725bf36935d8666ead7aa69b52be55af369d193402"
-dependencies = [
- "ppv-lite86",
- "rand_core",
-]
-
-[[package]]
-name = "rand_core"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "90bde5296fc891b0cef12a6d03ddccc162ce7b2aff54160af9338f8d40df6d19"
-
-[[package]]
-name = "remain"
-version = "0.2.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0c35270ea384ac1762895831cc8acb96f171468e52cec82ed9186f9416209fa4"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "ripemd160"
-version = "0.9.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2eca4ecc81b7f313189bf73ce724400a07da2a6dac19588b03c8bd76a2dcc251"
-dependencies = [
- "block-buffer",
- "digest",
- "opaque-debug",
 ]
 
 [[package]]
@@ -392,24 +142,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "secp256k1"
-version = "0.20.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "97d03ceae636d0fed5bae6a7f4f664354c5f4fcedf6eef053fef17e49f837d0a"
-dependencies = [
- "secp256k1-sys",
-]
-
-[[package]]
-name = "secp256k1-sys"
-version = "0.4.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "957da2573cde917463ece3570eab4a0b3f19de6f1646cde62e6fd3868f566036"
-dependencies = [
- "cc",
-]
-
-[[package]]
 name = "secret-cosmwasm-std"
 version = "0.10.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -428,78 +160,6 @@ version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ffee3243bb13c02ddcdc15458526288d36ec23422ec43681ac5d48e7325d8327"
 dependencies = [
- "secret-cosmwasm-std",
- "serde",
-]
-
-[[package]]
-name = "secret-toolkit"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8ea907911beefdfa8357c39d20116d15c5f745f62087193677f7b5323851f8dc"
-dependencies = [
- "secret-toolkit-serialization",
- "secret-toolkit-snip20",
- "secret-toolkit-snip721",
- "secret-toolkit-storage",
- "secret-toolkit-utils",
-]
-
-[[package]]
-name = "secret-toolkit-serialization"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22e051158ff36369c7d6bb107df93827d42c3fb283e34f2305c100ec9c12c4fb"
-dependencies = [
- "bincode2",
- "schemars",
- "secret-cosmwasm-std",
- "serde",
-]
-
-[[package]]
-name = "secret-toolkit-snip20"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2c111abe86e9ca5e0826ecf34a8a3941c0f55fa784b925604db0525627f75353"
-dependencies = [
- "schemars",
- "secret-cosmwasm-std",
- "secret-toolkit-utils",
- "serde",
-]
-
-[[package]]
-name = "secret-toolkit-snip721"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8193e1576aa8c95a165ff2cd8bee50220beddd01800ea97ee701b25fb88e6213"
-dependencies = [
- "schemars",
- "secret-cosmwasm-std",
- "secret-toolkit-utils",
- "serde",
-]
-
-[[package]]
-name = "secret-toolkit-storage"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "77901c296be19a46b8c6f9806c688e9c8d225c36b51dbabeb49c1f2618b68f65"
-dependencies = [
- "secret-cosmwasm-std",
- "secret-cosmwasm-storage",
- "secret-toolkit-serialization",
- "serde",
-]
-
-[[package]]
-name = "secret-toolkit-utils"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "38fcd7c28522f7eb2e70c8911d2e91e60879d56d59258335e605df569e0039f9"
-dependencies = [
- "schemars",
  "secret-cosmwasm-std",
  "serde",
 ]
@@ -556,19 +216,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sha2"
-version = "0.9.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4d58a1e1bf39749807d89cf2d98ac2dfa0ff1cb3faa38fbb64dd88ac8013d800"
-dependencies = [
- "block-buffer",
- "cfg-if",
- "cpufeatures",
- "digest",
- "opaque-debug",
-]
-
-[[package]]
 name = "snafu"
 version = "0.6.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -590,18 +237,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "static_assertions"
-version = "1.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
-
-[[package]]
-name = "subtle"
-version = "2.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6bdef32e8150c2a081110b42772ffe7d7c9032b606bc226c8260fd97e0976601"
-
-[[package]]
 name = "syn"
 version = "1.0.93"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -613,31 +248,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "typenum"
-version = "1.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dcf81ac59edc17cc8697ff311e8f5ef2d99fcbd9817b34cec66f90b6c3dfd987"
-
-[[package]]
-name = "uint"
-version = "0.9.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "12f03af7ccf01dd611cc450a0d10dbc9b745770d096473e2faf0ca6e2d66d1e0"
-dependencies = [
- "byteorder",
- "crunchy",
- "hex",
- "static_assertions",
-]
-
-[[package]]
 name = "unicode-xid"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "957e51f3646910546462e67d5f7599b9e4fb8acdd304b087a6494730f9eebf04"
-
-[[package]]
-name = "version_check"
-version = "0.9.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"

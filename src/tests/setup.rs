@@ -2,8 +2,7 @@
 
 use fadroma::{
     ensemble::{ContractEnsemble, ContractHarness, MockDeps, MockEnv},
-    from_binary, to_binary, Binary, ContractLink, Env, HandleResponse, HumanAddr, InitResponse,
-    StdError, StdResult,
+    prelude::*,
 };
 use serde::{Deserialize, Serialize};
 
@@ -51,8 +50,8 @@ impl MulticallTestbed {
 
         Self {
             ensemble,
-            mock_contract,
-            multicall,
+            mock_contract: mock_contract.instance,
+            multicall: multicall.instance,
         }
     }
     pub fn batch_chain(&self, queries: Vec<QueryMock>) -> ChainResponse {
@@ -60,6 +59,7 @@ impl MulticallTestbed {
             .into_iter()
             .map(|query| MultiQuery {
                 contract_address: self.mock_contract.address.clone(),
+                code_hash: self.mock_contract.code_hash.clone(),
                 query: to_binary(&query).unwrap(),
             })
             .collect::<Vec<_>>();
@@ -67,7 +67,7 @@ impl MulticallTestbed {
             .ensemble
             .query(
                 self.multicall.address.clone(),
-                QueryMsg::MultiChain { queries },
+                &QueryMsg::MultiChain { queries },
             )
             .unwrap();
 

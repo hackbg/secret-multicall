@@ -15,6 +15,6 @@ crate-type = ["cdylib", "rlib"]
 doctest    = false
 
 [dependencies]
-fadroma = { path = "./fadroma/crates/fadroma", features = ["derive"] }
+fadroma = { path = "./fadroma/crates/fadroma", features = ["derive", "ensemble"] }
 serde = { version = "1.0.103", default-features = false, features = ["derive"] }
 schemars = "0.7"
