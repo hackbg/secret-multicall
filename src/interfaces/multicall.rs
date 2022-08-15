@@ -1,7 +1,7 @@
 use fadroma::{
     cosmwasm_std,
     derive_contract::{init, interface, query},
-    Binary, HumanAddr, InitResponse, StdResult,
+    prelude::*,
 };
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
@@ -20,6 +20,7 @@ pub trait Multicall {
 #[serde(rename_all = "snake_case")]
 pub struct MultiQuery {
     pub contract_address: HumanAddr,
+    pub code_hash: String,
     pub query: Binary,
 }
 #[derive(Serialize, Deserialize, JsonSchema, Clone, Debug)]
