@@ -16,7 +16,7 @@ fn chain_batch_regular() {
 
     let queries = vec![msg.clone(), msg.clone()];
 
-    let responses = testbed.batch_chain(queries);
+    let responses = testbed.batch_query(queries);
     assert!(responses.len() == 2);
 }
 #[test]
@@ -30,7 +30,7 @@ fn has_exception() {
 
     let queries = vec![msg.clone(), err.clone()];
 
-    let responses = testbed.batch_chain(queries);
+    let responses = testbed.batch_query(queries);
 
     assert!(responses.len() == 2);
     assert!(responses[1].error.is_some());

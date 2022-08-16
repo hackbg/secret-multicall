@@ -54,7 +54,7 @@ impl MulticallTestbed {
             multicall: multicall.instance,
         }
     }
-    pub fn batch_chain(&self, queries: Vec<QueryMock>) -> ChainResponse {
+    pub fn batch_query(&self, queries: Vec<QueryMock>) -> ChainResponse {
         let queries = queries
             .into_iter()
             .map(|query| MultiQuery {

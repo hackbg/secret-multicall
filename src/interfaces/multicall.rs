@@ -13,7 +13,7 @@ pub trait Multicall {
     #[init]
     fn new() -> StdResult<InitResponse>;
     #[query]
-    fn multi_chain(queries: Vec<MultiQuery>) -> StdResult<ChainResponse>;
+    fn batch_query(queries: Vec<MultiQuery>) -> StdResult<ChainResponse>;
 }
 
 #[derive(Serialize, Deserialize, JsonSchema, Debug)]

@@ -22,7 +22,7 @@ pub trait Multicall {
     }
 
     #[query]
-    fn multi_chain(queries: Vec<MultiQuery>) -> StdResult<ChainResponse> {
+    fn batch_query(queries: Vec<MultiQuery>) -> StdResult<ChainResponse> {
         let results = queries
             .into_iter()
             .map(|query| process_wasm_query(deps, query))
