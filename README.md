@@ -10,8 +10,8 @@ The contract guarantees that all values returned are from the same block and is 
 
 | Chain              | Address                                         | Code Id | Code Hash                                                          |
 | ------------------ | ----------------------------------------------- | ------- | ------------------------------------------------------------------ |
-| secret-4           | `secret15vkk5mmlrz3hqzdguyrt92pl08e0ycru66293x` | `644`   | `9edf2196a1edc0988ee3c61f5f1d23cd8cf7b1e4b77f2101d2de3b00513d7f86` |
-| pulsar-2 (testnet) | `secret1kwjxcujl6mcgxmagwwgxupm6qdvmm4k2wwl5y3` | `9163`  | `9edf2196a1edc0988ee3c61f5f1d23cd8cf7b1e4b77f2101d2de3b00513d7f86` |
+| secret-4           | `secret17k2x37ld48v29pat9qwq0lvdg5k2qsy0unt54d` | `645`   | `d8fcff74ec4165391c0999410b679a24ff9446d4d4518807c5ca29a8fbe554c9` |
+| pulsar-2 (testnet) | `secret1y7sml6zm208ptv9lz6640h39nvr27gf8lgvwcx` | `11450`  | `d8fcff74ec4165391c0999410b679a24ff9446d4d4518807c5ca29a8fbe554c9` |
 
 ## Example usage
 
